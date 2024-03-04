@@ -1,20 +1,12 @@
 pipeline {
     agent any
-   // tools {
-   //     Maven 'maven 3'
-   //     Jdk 'jdk 8'
-   // }    
     stages {
-        stage ('Build') {
+        stage ('shell script') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+                 sh '''#!/bin/bash
+                 sleep 60
+                  echo "Hello Delcarative pipeline"'''
             }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-        
-		        }
-		  }
-	}
+        }
     }
 }
